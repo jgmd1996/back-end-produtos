@@ -14,7 +14,7 @@ class CategoryController {
     const id = req.params.id;
 
     categories.findById(id)
-    .populate('produtos', 'nome')
+    .populate('produto', 'nome')
     .exec((err, categories) => {
       if(err) {
         res.status(400).send({message: `${err.message} - Id do category não localizado.`})

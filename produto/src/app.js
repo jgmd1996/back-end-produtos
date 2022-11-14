@@ -2,6 +2,7 @@ import express from "express";
 import db from "./config/dbConnect.js"
 import routes from "./routes/index.js"
 import cors from 'cors';
+//const cors = require('cors');
 
 
 
@@ -11,11 +12,14 @@ db.once("open", () => {
 })
 
 const app = express();
+app.use(
+  cors({
+    origin: "*",
+  })
+)
+
 app.use(express.json())
 routes(app);
 
-
-app.use(cors());
-app.options('*', cors());
 
 export default app
